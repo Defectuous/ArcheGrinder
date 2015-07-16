@@ -471,7 +471,7 @@ namespace ArcheGrinder
                 }
                 catch (IOException)
                 {
-                    core.Log("ArcheGrinder"+core.me.name+".xml is already opened, settings saving failed");
+                    core.Log(Application.StartupPath +"\\ArcheGrinder"+core.me.name+".xml is already opened, settings saving failed");
                 }
                 catch (Exception e)
                 {
@@ -548,7 +548,7 @@ namespace ArcheGrinder
         private void FormMain_Shown(object sender, EventArgs e)
         {
             
-            this.Text = "ArcheGrinder used by: " + core.me.name;
+            this.Text = "ArcheGrinder used by: " + core.me.name; // wird den Namen des Chars anzeigen + text sobald die Form offen ist
         }
 
         private void btnCombat_Click(object sender = null, EventArgs e = null)

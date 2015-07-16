@@ -937,12 +937,13 @@ namespace ArcheGrinder
         {
             if (obj == core.me)
             {
-                core.Log("Character died :( Triggering death routine to try to run back to farm spot");
+                core.Log("Character died :( Triggering death routine to try to run back to farm spot", System.Drawing.Color.Red);
 
                 string[] paths = Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Plugins\\ArcheGrinder\\DeathRoutes", core.me.name+"*.db3");
                 if (paths.Length == 0)
                 {
-                    core.Log("You don't have any routes in the DeathRoutes folder");
+                    core.Log("You don't have any routes in the DeathRoutes folder. The file must be like this: Charname.db3", System.Drawing.Color.Red); //changed Log so everyone should now how the deathroute file must be named
+                    core.Log("With this option you will be able to use different Deathroutes for different Chars", System.Drawing.Color.Red);
                     return;
                 }
 
@@ -1032,7 +1033,7 @@ namespace ArcheGrinder
 
                         if (GetAggroCount() == 0 && (core.hpp() < prefs.minHP || core.mpp() < prefs.minMP))
                         {
-                            core.Log("Pausing run-back routine to rebuff/regen");
+                            core.Log("Pausing run-back routine to rebuff/regen", System.Drawing.Color.Orange);
                             gps.SuspendGpsMove();
 
                             while (GetAggroCount() == 0 && (core.hpp() < prefs.minHP || core.mpp() < prefs.minMP))
@@ -1058,7 +1059,7 @@ namespace ArcheGrinder
 
                         )
                         {
-                            core.Log("Pausing run-back routine to kill " + mob.name);
+                            core.Log("Pausing run-back routine to kill " + mob.name, System.Drawing.Color.Green);
                             gps.SuspendGpsMove();
                             KillMob(mob);
                             gps.ResumeGpsMove();
@@ -1082,16 +1083,16 @@ namespace ArcheGrinder
             foreach (PartyMember t in partyMembers)
                 team.Add(t.obj);
 
-            core.Log("Team size: " + team.Count);
+            core.Log("Team size: " + team.Count, System.Drawing.Color.Blue);
         }
         private void core_onPartyMemberLeaves(PartyMember member)
         {
-            core.Log(member.nick + " left the group");
+            core.Log(member.nick + " left the group", System.Drawing.Color.Blue);
             RefreshTeam();
         }
         void core_onNewPartyMember(PartyMember member)
         {
-            core.Log(member.nick + " joined the group");
+            core.Log(member.nick + " joined the group", System.Drawing.Color.Blue);
             RefreshTeam();
         }
         #endregion
@@ -1131,22 +1132,22 @@ namespace ArcheGrinder
                 if (!usePotionHP && item.name.Equals(prefs.potionHP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     usePotionHP = true;
-                    core.Log("Using HP Potion for this session: " + item.name);
+                    core.Log("Using HP Potion for this session: " + item.name, System.Drawing.Color.LightGreen);
                 }
                 else if (!usePotionMP && item.name.Equals(prefs.potionMP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     usePotionMP = true;
-                    core.Log("Using MP Potion for this session: " + item.name);
+                    core.Log("Using MP Potion for this session: " + item.name, System.Drawing.Color.LightGreen);
                 }
                 else if (!useFoodHP && item.name.Equals(prefs.foodHP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     useFoodHP = true;
-                    core.Log("Using HP Food for this session: " + item.name);
+                    core.Log("Using HP Food for this session: " + item.name, System.Drawing.Color.LightGreen);
                 }
                 else if (!useFoodMP && item.name.Equals(prefs.foodMP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     useFoodMP = true;
-                    core.Log("Using MP Food for this session: " + item.name);
+                    core.Log("Using MP Food for this session: " + item.name, System.Drawing.Color.LightGreen);
                 }
             }
 
@@ -1182,7 +1183,7 @@ namespace ArcheGrinder
             {
                 if (!core.isAlive())
                 {
-                    core.Log("You died...");
+                    core.Log("You died...", System.Drawing.Color.Red);
                     break;
                 }
 
@@ -1208,12 +1209,12 @@ namespace ArcheGrinder
                     if (bestMob == null)
                     {
                         if (!noTargets)
-                            core.Log("No targets available");
+                            core.Log("No targets available", System.Drawing.Color.Orange);
                         noTargets = true;
                     }
                     else
                     {
-                        core.Log("new target: " + bestMob.name + " (" + Math.Round(bestMob.dist(startX, startY, startZ)) + "m from anchor)");
+                        core.Log("new target: " + bestMob.name + " (" + Math.Round(bestMob.dist(startX, startY, startZ)) + "m from anchor)", System.Drawing.Color.Navy);
                         noTargets = false;
                     }
                 }
@@ -1230,7 +1231,7 @@ namespace ArcheGrinder
                     int labor = core.me.opPoints;
                     if (purseCount >= 5 && labor >= 25 && (labor >= laborCap - 50 || (DateTime.UtcNow - lastPurseOpened).TotalSeconds > 300))
                     {
-                        core.Log("Trying to open up to " + purseCount + " coinpurses");
+                        core.Log("Trying to open up to " + purseCount + " coinpurses", System.Drawing.Color.Navy);
                         while (purseCount > 0 && core.me.opPoints >= 5 && GetAggroCount() == 0 && (noTargets || core.hpp() + core.mpp() < 190))
                         {
                             inventory = core.getAllInvItems();
@@ -1258,7 +1259,7 @@ namespace ArcheGrinder
                     int labor = core.me.opPoints;
                     if (StolenBagCount >= 5 && labor >= 25 && (labor <= laborCap - 150 || (DateTime.UtcNow - lastStolenBagOpened).TotalSeconds > 300))
                     {
-                        core.Log("Trying to open up to " + StolenBagCount + " Stolen Bag's");
+                        core.Log("Trying to open up to " + StolenBagCount + " Stolen Bag's", System.Drawing.Color.Navy);
                         while (StolenBagCount > 0 && core.me.opPoints >= 5 && GetAggroCount() == 0 && (noTargets || core.hpp() + core.mpp() < 190))
                         {
                             inventory = core.getAllInvItems();
@@ -1288,7 +1289,7 @@ namespace ArcheGrinder
                     int labor = core.me.opPoints;
                     if (ScratchedSafeCount >= 5 && labor >= 25 && (labor <= laborCap - 150 || (DateTime.UtcNow - lastScratchedSafeOpened).TotalSeconds > 300))
                     {
-                        core.Log("Trying to open up to " + ScratchedSafeCount + " Stolen Bag's");
+                        core.Log("Trying to open up to " + ScratchedSafeCount + " Stolen Bag's", System.Drawing.Color.Navy);
                         while (ScratchedSafeCount > 0 && core.me.opPoints >= 5 && GetAggroCount() == 0 && (noTargets || core.hpp() + core.mpp() < 190))
                         {
                             inventory = core.getAllInvItems();
@@ -1336,7 +1337,7 @@ namespace ArcheGrinder
 
                     if (core.getBuff(bestMob, _BF_RETURNING) != null)
                     {
-                        core.Log("Mob is running away, skipping");
+                        core.Log("Mob is running away, skipping", System.Drawing.Color.OrangeRed);
                         bestMob = null;
                         break;
                     }
@@ -1397,7 +1398,7 @@ namespace ArcheGrinder
                         double diff = (DateTime.UtcNow - startLoot).TotalSeconds;
                         if (diff > 5 || (GetAggroCount() > 0 && diff > 3))
                         {
-                            core.Log("Spent too long trying to loot, giving up");
+                            core.Log("Spent too long trying to loot, giving up", System.Drawing.Color.Red);
                             break;
                         }
                     }
@@ -1472,7 +1473,7 @@ namespace ArcheGrinder
         }
         private void SelectAndUseControlSkill(Creature combatTarget)
         {
-            core.Log("Trying to control an extra mob!");
+            core.Log("Trying to control an extra mob!", System.Drawing.Color.DarkOrange);
             foreach (Creature mob in core.getAggroMobs())
             {
                 if (mob != combatTarget && !IsControlled(mob) && core.isAttackable(combatTarget))
@@ -1779,7 +1780,7 @@ namespace ArcheGrinder
 
                 else
                 {
-                    core.Log("Something went wrong, will use bow or melee basic attack! ! !");
+                    core.Log("Something went wrong, will use bow or melee basic attack! ! !", System.Drawing.Color.DarkRed);
                     // Something went wrong, use bow or melee basic attack depending on distance
                     if (dist > 4 && CanCast(_RANGED_ATTACK))
                         UseSkillAndWait(_RANGED_ATTACK);

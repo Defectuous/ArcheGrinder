@@ -21,7 +21,7 @@ namespace ArcheGrinder
 
         public static string GetPluginVersion()
         {
-            return "ArcheGrinder X 2.485";
+            return "ArcheGrinder X 2.486";
             
         }
 
@@ -50,7 +50,7 @@ namespace ArcheGrinder
 
             if (gameState != GameState.Ingame)
             {
-                Log("Waiting to be ingame to fully load the plugin...", System.Drawing.Color.Orange);
+                Log("Waiting to be ingame to fully load the plugin...", System.Drawing.Color.Orange); //changed Color
                 while (gameState != GameState.Ingame)
                     Thread.Sleep(50);
             }
@@ -61,7 +61,7 @@ namespace ArcheGrinder
             form.FormClosed += form_FormClosed;
             formThread = new Thread(loadForm);
             formThread.Start();
-            Log("Interface loaded", System.Drawing.Color.Green);
+            Log("Interface loaded", System.Drawing.Color.Green); //changed Color
             while (isFormOpen)
             {
                 if (me == null)
@@ -81,7 +81,7 @@ namespace ArcheGrinder
 
             if (form != null)
             {
-                Log("ArcheGrinder plugin is succesfully stopped", System.Drawing.Color.Green);
+                Log("ArcheGrinder plugin is succesfully stopped", System.Drawing.Color.Green); //changed Color
                 form.Invoke(new Action(() => form.Close()));
                 form.Invoke(new Action(() => form.Dispose()));
 
@@ -98,7 +98,7 @@ namespace ArcheGrinder
 
             if (gameState != GameState.Ingame)
             {
-                Log("Waiting to be ingame to fully load the plugin...", System.Drawing.Color.Orange);
+                Log("Waiting to be ingame to fully load the plugin...", System.Drawing.Color.Orange); //changed Color
                 while (gameState != GameState.Ingame)
                     Thread.Sleep(50);
             }
@@ -123,7 +123,7 @@ namespace ArcheGrinder
 
         void form_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Log("Form closed - stopping the plugin");
+            Log("Form closed - stopping the plugin", System.Drawing.Color.Red); //changed Color
             isFormOpen = false;
             if(isPluginRun(pluginPath))
             {
