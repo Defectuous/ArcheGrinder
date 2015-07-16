@@ -939,7 +939,7 @@ namespace ArcheGrinder
             {
                 core.Log("Character died :( Triggering death routine to try to run back to farm spot", System.Drawing.Color.Red);
 
-                string[] paths = Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Plugins\\ArcheGrinder\\DeathRoutes", core.me.name+"*.db3");
+                string[] paths = Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Plugins\\ArcheGrinder\\DeathRoutes", core.me.name+"(*).db3");
                 if (paths.Length == 0)
                 {
                     core.Log("You don't have any routes in the DeathRoutes folder. The file must be like this: Charname.db3", System.Drawing.Color.Red); //changed Log so everyone should now how the deathroute file must be named
