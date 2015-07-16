@@ -267,7 +267,7 @@
             this.Version.Name = "Version";
             this.Version.Size = new System.Drawing.Size(99, 16);
             this.Version.TabIndex = 114;
-            this.Version.Text = "Version X 2.485";
+            this.Version.Text = "Version X 2.487";
             // 
             // lootScratchedSafe
             // 
