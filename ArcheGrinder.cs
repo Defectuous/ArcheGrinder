@@ -21,7 +21,7 @@ namespace ArcheGrinder
 
         public static string GetPluginVersion()
         {
-            return "ArcheGrinder X 2.484";
+            return "ArcheGrinder X 2.485";
             
         }
 

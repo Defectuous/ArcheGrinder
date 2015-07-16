@@ -30,7 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabMain = new System.Windows.Forms.TabPage();
+            this.tabLoot = new System.Windows.Forms.TabPage();
+            this.lootDisciplesTear = new System.Windows.Forms.CheckBox();
+            this.lootEnchantedSkein = new System.Windows.Forms.CheckBox();
             this.Version = new System.Windows.Forms.Label();
             this.lootScratchedSafe = new System.Windows.Forms.CheckBox();
             this.lootStolenBag = new System.Windows.Forms.CheckBox();
@@ -60,6 +62,35 @@
             this.lootCourage = new System.Windows.Forms.CheckBox();
             this.lootConviction = new System.Windows.Forms.CheckBox();
             this.lootCompassion = new System.Windows.Forms.CheckBox();
+            this.tabCombat = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.nuralsTrennleistebenutzt = new System.Windows.Forms.ProgressBar();
+            this.nuralsTrennleistebenutzt2 = new System.Windows.Forms.ProgressBar();
+            this.label29 = new System.Windows.Forms.Label();
+            this.textMinMPplayDead = new System.Windows.Forms.TextBox();
+            this.chkPlayDeadMana = new System.Windows.Forms.CheckBox();
+            this.chkOpenScratchedSafe = new System.Windows.Forms.CheckBox();
+            this.chkOpenStolenBag = new System.Windows.Forms.CheckBox();
+            this.chkAutoCombat = new System.Windows.Forms.CheckBox();
+            this.chkAssist = new System.Windows.Forms.CheckBox();
+            this.labelMinHP = new System.Windows.Forms.Label();
+            this.textMinHP = new System.Windows.Forms.TextBox();
+            this.labelMinMP = new System.Windows.Forms.Label();
+            this.textMinMP = new System.Windows.Forms.TextBox();
+            this.chkOpenPurses = new System.Windows.Forms.CheckBox();
+            this.chkLoot = new System.Windows.Forms.CheckBox();
+            this.chkUseCC = new System.Windows.Forms.CheckBox();
+            this.chkHealerMode = new System.Windows.Forms.CheckBox();
+            this.chkFastTag = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textCombatRange = new System.Windows.Forms.TextBox();
+            this.labelCombatRange = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textZoneRadius = new System.Windows.Forms.TextBox();
+            this.labelZoneRadius = new System.Windows.Forms.Label();
+            this.btnCombat = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabBuff = new System.Windows.Forms.TabPage();
             this.chkLuckyQuicksilverTonic = new System.Windows.Forms.CheckBox();
             this.chkAncientLibraryRelic = new System.Windows.Forms.CheckBox();
@@ -137,51 +168,20 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tooltips = new System.Windows.Forms.ToolTip(this.components);
-            this.tabCombat = new System.Windows.Forms.TabPage();
-            this.chkPlayDeadMana = new System.Windows.Forms.CheckBox();
-            this.chkOpenScratchedSafe = new System.Windows.Forms.CheckBox();
-            this.chkOpenStolenBag = new System.Windows.Forms.CheckBox();
-            this.chkAutoCombat = new System.Windows.Forms.CheckBox();
-            this.chkAssist = new System.Windows.Forms.CheckBox();
-            this.labelMinHP = new System.Windows.Forms.Label();
-            this.textMinHP = new System.Windows.Forms.TextBox();
-            this.labelMinMP = new System.Windows.Forms.Label();
-            this.textMinMP = new System.Windows.Forms.TextBox();
-            this.chkOpenPurses = new System.Windows.Forms.CheckBox();
-            this.chkLoot = new System.Windows.Forms.CheckBox();
-            this.chkUseCC = new System.Windows.Forms.CheckBox();
-            this.chkHealerMode = new System.Windows.Forms.CheckBox();
-            this.chkFastTag = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textCombatRange = new System.Windows.Forms.TextBox();
-            this.labelCombatRange = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textZoneRadius = new System.Windows.Forms.TextBox();
-            this.labelZoneRadius = new System.Windows.Forms.Label();
-            this.btnCombat = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textMinMPplayDead = new System.Windows.Forms.TextBox();
-            this.label29 = new System.Windows.Forms.Label();
-            this.nuralsTrennleistebenutzt2 = new System.Windows.Forms.ProgressBar();
-            this.nuralsTrennleistebenutzt = new System.Windows.Forms.ProgressBar();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.lootEnchantedSkein = new System.Windows.Forms.CheckBox();
-            this.lootDisciplesTear = new System.Windows.Forms.CheckBox();
             this.tabControl.SuspendLayout();
-            this.tabMain.SuspendLayout();
+            this.tabLoot.SuspendLayout();
+            this.tabCombat.SuspendLayout();
             this.tabBuff.SuspendLayout();
             this.tabIgnore.SuspendLayout();
             this.tabGear.SuspendLayout();
             this.tabStats.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabHelp.SuspendLayout();
-            this.tabCombat.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.tabMain);
+            this.tabControl.Controls.Add(this.tabLoot);
             this.tabControl.Controls.Add(this.tabCombat);
             this.tabControl.Controls.Add(this.tabBuff);
             this.tabControl.Controls.Add(this.tabIgnore);
@@ -196,58 +196,78 @@
             this.tabControl.Size = new System.Drawing.Size(548, 421);
             this.tabControl.TabIndex = 0;
             // 
-            // tabMain
+            // tabLoot
             // 
-            this.tabMain.Controls.Add(this.lootDisciplesTear);
-            this.tabMain.Controls.Add(this.lootEnchantedSkein);
-            this.tabMain.Controls.Add(this.Version);
-            this.tabMain.Controls.Add(this.lootScratchedSafe);
-            this.tabMain.Controls.Add(this.lootStolenBag);
-            this.tabMain.Controls.Add(this.lootAyanad);
-            this.tabMain.Controls.Add(this.lootEternalLibraryTome);
-            this.tabMain.Controls.Add(this.lootEternalLibraryArmor);
-            this.tabMain.Controls.Add(this.lootEternalLibraryWeapon);
-            this.tabMain.Controls.Add(this.lootHauntedChest);
-            this.tabMain.Controls.Add(this.lootDivinePlateGear);
-            this.tabMain.Controls.Add(this.lootDivineLeatherGear);
-            this.tabMain.Controls.Add(this.lootDivineClothGear);
-            this.tabMain.Controls.Add(this.label19);
-            this.tabMain.Controls.Add(this.label20);
-            this.tabMain.Controls.Add(this.label21);
-            this.tabMain.Controls.Add(this.label22);
-            this.tabMain.Controls.Add(this.chkAutoLoot);
-            this.tabMain.Controls.Add(this.btnLoot);
-            this.tabMain.Controls.Add(this.label2);
-            this.tabMain.Controls.Add(this.lootUnknown);
-            this.tabMain.Controls.Add(this.lootDragonChip);
-            this.tabMain.Controls.Add(this.lootUnid);
-            this.tabMain.Controls.Add(this.lootPurses);
-            this.tabMain.Controls.Add(this.lootSacrifice);
-            this.tabMain.Controls.Add(this.lootLoyalty);
-            this.tabMain.Controls.Add(this.lootHonor);
-            this.tabMain.Controls.Add(this.lootFortitude);
-            this.tabMain.Controls.Add(this.lootCourage);
-            this.tabMain.Controls.Add(this.lootConviction);
-            this.tabMain.Controls.Add(this.lootCompassion);
-            this.tabMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabMain.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.tabMain.Location = new System.Drawing.Point(4, 22);
-            this.tabMain.Name = "tabMain";
-            this.tabMain.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMain.Size = new System.Drawing.Size(540, 395);
-            this.tabMain.TabIndex = 0;
-            this.tabMain.Text = "Loot";
-            this.tabMain.UseVisualStyleBackColor = true;
+            this.tabLoot.Controls.Add(this.lootDisciplesTear);
+            this.tabLoot.Controls.Add(this.lootEnchantedSkein);
+            this.tabLoot.Controls.Add(this.Version);
+            this.tabLoot.Controls.Add(this.lootScratchedSafe);
+            this.tabLoot.Controls.Add(this.lootStolenBag);
+            this.tabLoot.Controls.Add(this.lootAyanad);
+            this.tabLoot.Controls.Add(this.lootEternalLibraryTome);
+            this.tabLoot.Controls.Add(this.lootEternalLibraryArmor);
+            this.tabLoot.Controls.Add(this.lootEternalLibraryWeapon);
+            this.tabLoot.Controls.Add(this.lootHauntedChest);
+            this.tabLoot.Controls.Add(this.lootDivinePlateGear);
+            this.tabLoot.Controls.Add(this.lootDivineLeatherGear);
+            this.tabLoot.Controls.Add(this.lootDivineClothGear);
+            this.tabLoot.Controls.Add(this.label19);
+            this.tabLoot.Controls.Add(this.label20);
+            this.tabLoot.Controls.Add(this.label21);
+            this.tabLoot.Controls.Add(this.label22);
+            this.tabLoot.Controls.Add(this.chkAutoLoot);
+            this.tabLoot.Controls.Add(this.btnLoot);
+            this.tabLoot.Controls.Add(this.label2);
+            this.tabLoot.Controls.Add(this.lootUnknown);
+            this.tabLoot.Controls.Add(this.lootDragonChip);
+            this.tabLoot.Controls.Add(this.lootUnid);
+            this.tabLoot.Controls.Add(this.lootPurses);
+            this.tabLoot.Controls.Add(this.lootSacrifice);
+            this.tabLoot.Controls.Add(this.lootLoyalty);
+            this.tabLoot.Controls.Add(this.lootHonor);
+            this.tabLoot.Controls.Add(this.lootFortitude);
+            this.tabLoot.Controls.Add(this.lootCourage);
+            this.tabLoot.Controls.Add(this.lootConviction);
+            this.tabLoot.Controls.Add(this.lootCompassion);
+            this.tabLoot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabLoot.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.tabLoot.Location = new System.Drawing.Point(4, 22);
+            this.tabLoot.Name = "tabLoot";
+            this.tabLoot.Padding = new System.Windows.Forms.Padding(3);
+            this.tabLoot.Size = new System.Drawing.Size(540, 395);
+            this.tabLoot.TabIndex = 0;
+            this.tabLoot.Text = "Loot";
+            this.tabLoot.UseVisualStyleBackColor = true;
+            // 
+            // lootDisciplesTear
+            // 
+            this.lootDisciplesTear.AutoSize = true;
+            this.lootDisciplesTear.Location = new System.Drawing.Point(344, 238);
+            this.lootDisciplesTear.Name = "lootDisciplesTear";
+            this.lootDisciplesTear.Size = new System.Drawing.Size(110, 17);
+            this.lootDisciplesTear.TabIndex = 116;
+            this.lootDisciplesTear.Text = "Disciple\'s Tear";
+            this.lootDisciplesTear.UseVisualStyleBackColor = true;
+            // 
+            // lootEnchantedSkein
+            // 
+            this.lootEnchantedSkein.AutoSize = true;
+            this.lootEnchantedSkein.Location = new System.Drawing.Point(344, 215);
+            this.lootEnchantedSkein.Name = "lootEnchantedSkein";
+            this.lootEnchantedSkein.Size = new System.Drawing.Size(123, 17);
+            this.lootEnchantedSkein.TabIndex = 115;
+            this.lootEnchantedSkein.Text = "Enchanted Skein";
+            this.lootEnchantedSkein.UseVisualStyleBackColor = true;
             // 
             // Version
             // 
             this.Version.AutoSize = true;
-            this.Version.Font = new System.Drawing.Font("Mistral", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Version.Location = new System.Drawing.Point(463, 376);
+            this.Version.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Version.Location = new System.Drawing.Point(433, 376);
             this.Version.Name = "Version";
-            this.Version.Size = new System.Drawing.Size(74, 16);
+            this.Version.Size = new System.Drawing.Size(99, 16);
             this.Version.TabIndex = 114;
-            this.Version.Text = "Version X 2.484";
+            this.Version.Text = "Version X 2.485";
             // 
             // lootScratchedSafe
             // 
@@ -538,6 +558,321 @@
             this.lootCompassion.TabIndex = 0;
             this.lootCompassion.Text = "Compassion (Club)";
             this.lootCompassion.UseVisualStyleBackColor = true;
+            // 
+            // tabCombat
+            // 
+            this.tabCombat.Controls.Add(this.label30);
+            this.tabCombat.Controls.Add(this.label28);
+            this.tabCombat.Controls.Add(this.nuralsTrennleistebenutzt);
+            this.tabCombat.Controls.Add(this.nuralsTrennleistebenutzt2);
+            this.tabCombat.Controls.Add(this.label29);
+            this.tabCombat.Controls.Add(this.textMinMPplayDead);
+            this.tabCombat.Controls.Add(this.chkPlayDeadMana);
+            this.tabCombat.Controls.Add(this.chkOpenScratchedSafe);
+            this.tabCombat.Controls.Add(this.chkOpenStolenBag);
+            this.tabCombat.Controls.Add(this.chkAutoCombat);
+            this.tabCombat.Controls.Add(this.chkAssist);
+            this.tabCombat.Controls.Add(this.labelMinHP);
+            this.tabCombat.Controls.Add(this.textMinHP);
+            this.tabCombat.Controls.Add(this.labelMinMP);
+            this.tabCombat.Controls.Add(this.textMinMP);
+            this.tabCombat.Controls.Add(this.chkOpenPurses);
+            this.tabCombat.Controls.Add(this.chkLoot);
+            this.tabCombat.Controls.Add(this.chkUseCC);
+            this.tabCombat.Controls.Add(this.chkHealerMode);
+            this.tabCombat.Controls.Add(this.chkFastTag);
+            this.tabCombat.Controls.Add(this.label8);
+            this.tabCombat.Controls.Add(this.textCombatRange);
+            this.tabCombat.Controls.Add(this.labelCombatRange);
+            this.tabCombat.Controls.Add(this.label7);
+            this.tabCombat.Controls.Add(this.textZoneRadius);
+            this.tabCombat.Controls.Add(this.labelZoneRadius);
+            this.tabCombat.Controls.Add(this.btnCombat);
+            this.tabCombat.Controls.Add(this.label3);
+            this.tabCombat.Location = new System.Drawing.Point(4, 22);
+            this.tabCombat.Name = "tabCombat";
+            this.tabCombat.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCombat.Size = new System.Drawing.Size(540, 395);
+            this.tabCombat.TabIndex = 7;
+            this.tabCombat.Text = "Combat";
+            this.tabCombat.UseVisualStyleBackColor = true;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label30.Location = new System.Drawing.Point(344, 27);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(100, 24);
+            this.label30.TabIndex = 144;
+            this.label30.Text = "Test Area";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label28.Location = new System.Drawing.Point(412, 157);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(100, 13);
+            this.label28.TabIndex = 143;
+            this.label28.Text = "to use PlayDead";
+            // 
+            // nuralsTrennleistebenutzt
+            // 
+            this.nuralsTrennleistebenutzt.Location = new System.Drawing.Point(269, 0);
+            this.nuralsTrennleistebenutzt.Name = "nuralsTrennleistebenutzt";
+            this.nuralsTrennleistebenutzt.Size = new System.Drawing.Size(18, 274);
+            this.nuralsTrennleistebenutzt.TabIndex = 142;
+            // 
+            // nuralsTrennleistebenutzt2
+            // 
+            this.nuralsTrennleistebenutzt2.Location = new System.Drawing.Point(-4, 258);
+            this.nuralsTrennleistebenutzt2.Name = "nuralsTrennleistebenutzt2";
+            this.nuralsTrennleistebenutzt2.Size = new System.Drawing.Size(276, 16);
+            this.nuralsTrennleistebenutzt2.TabIndex = 141;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label29.Location = new System.Drawing.Point(311, 157);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(58, 13);
+            this.label29.TabIndex = 140;
+            this.label29.Text = "Min MP%";
+            // 
+            // textMinMPplayDead
+            // 
+            this.textMinMPplayDead.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.textMinMPplayDead.Location = new System.Drawing.Point(375, 154);
+            this.textMinMPplayDead.Name = "textMinMPplayDead";
+            this.textMinMPplayDead.Size = new System.Drawing.Size(31, 20);
+            this.textMinMPplayDead.TabIndex = 139;
+            // 
+            // chkPlayDeadMana
+            // 
+            this.chkPlayDeadMana.AutoSize = true;
+            this.chkPlayDeadMana.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkPlayDeadMana.Location = new System.Drawing.Point(293, 137);
+            this.chkPlayDeadMana.Name = "chkPlayDeadMana";
+            this.chkPlayDeadMana.Size = new System.Drawing.Size(160, 17);
+            this.chkPlayDeadMana.TabIndex = 137;
+            this.chkPlayDeadMana.Text = "Use PlayDead for Mana";
+            this.chkPlayDeadMana.UseVisualStyleBackColor = true;
+            // 
+            // chkOpenScratchedSafe
+            // 
+            this.chkOpenScratchedSafe.AutoSize = true;
+            this.chkOpenScratchedSafe.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkOpenScratchedSafe.Location = new System.Drawing.Point(137, 114);
+            this.chkOpenScratchedSafe.Name = "chkOpenScratchedSafe";
+            this.chkOpenScratchedSafe.Size = new System.Drawing.Size(86, 17);
+            this.chkOpenScratchedSafe.TabIndex = 136;
+            this.chkOpenScratchedSafe.Text = "Open Safe";
+            this.chkOpenScratchedSafe.UseVisualStyleBackColor = true;
+            // 
+            // chkOpenStolenBag
+            // 
+            this.chkOpenStolenBag.AutoSize = true;
+            this.chkOpenStolenBag.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkOpenStolenBag.Location = new System.Drawing.Point(9, 114);
+            this.chkOpenStolenBag.Name = "chkOpenStolenBag";
+            this.chkOpenStolenBag.Size = new System.Drawing.Size(122, 17);
+            this.chkOpenStolenBag.TabIndex = 135;
+            this.chkOpenStolenBag.Text = "Open Stolen Bag";
+            this.chkOpenStolenBag.UseVisualStyleBackColor = true;
+            // 
+            // chkAutoCombat
+            // 
+            this.chkAutoCombat.AutoSize = true;
+            this.chkAutoCombat.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkAutoCombat.Location = new System.Drawing.Point(22, 235);
+            this.chkAutoCombat.Name = "chkAutoCombat";
+            this.chkAutoCombat.Size = new System.Drawing.Size(157, 17);
+            this.chkAutoCombat.TabIndex = 134;
+            this.chkAutoCombat.Text = "Enable combat on start";
+            this.chkAutoCombat.UseVisualStyleBackColor = true;
+            // 
+            // chkAssist
+            // 
+            this.chkAssist.AutoSize = true;
+            this.chkAssist.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkAssist.Location = new System.Drawing.Point(137, 137);
+            this.chkAssist.Name = "chkAssist";
+            this.chkAssist.Size = new System.Drawing.Size(94, 17);
+            this.chkAssist.TabIndex = 133;
+            this.chkAssist.Text = "Assist Mode";
+            this.chkAssist.UseVisualStyleBackColor = true;
+            // 
+            // labelMinHP
+            // 
+            this.labelMinHP.AutoSize = true;
+            this.labelMinHP.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.labelMinHP.Location = new System.Drawing.Point(7, 168);
+            this.labelMinHP.Name = "labelMinHP";
+            this.labelMinHP.Size = new System.Drawing.Size(57, 13);
+            this.labelMinHP.TabIndex = 132;
+            this.labelMinHP.Text = "Min HP%";
+            // 
+            // textMinHP
+            // 
+            this.textMinHP.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.textMinHP.Location = new System.Drawing.Point(70, 165);
+            this.textMinHP.Name = "textMinHP";
+            this.textMinHP.Size = new System.Drawing.Size(31, 20);
+            this.textMinHP.TabIndex = 131;
+            // 
+            // labelMinMP
+            // 
+            this.labelMinMP.AutoSize = true;
+            this.labelMinMP.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.labelMinMP.Location = new System.Drawing.Point(132, 168);
+            this.labelMinMP.Name = "labelMinMP";
+            this.labelMinMP.Size = new System.Drawing.Size(58, 13);
+            this.labelMinMP.TabIndex = 130;
+            this.labelMinMP.Text = "Min MP%";
+            // 
+            // textMinMP
+            // 
+            this.textMinMP.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.textMinMP.Location = new System.Drawing.Point(196, 165);
+            this.textMinMP.Name = "textMinMP";
+            this.textMinMP.Size = new System.Drawing.Size(31, 20);
+            this.textMinMP.TabIndex = 129;
+            // 
+            // chkOpenPurses
+            // 
+            this.chkOpenPurses.AutoSize = true;
+            this.chkOpenPurses.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkOpenPurses.Location = new System.Drawing.Point(9, 91);
+            this.chkOpenPurses.Name = "chkOpenPurses";
+            this.chkOpenPurses.Size = new System.Drawing.Size(98, 17);
+            this.chkOpenPurses.TabIndex = 128;
+            this.chkOpenPurses.Text = "Open Purses";
+            this.chkOpenPurses.UseVisualStyleBackColor = true;
+            // 
+            // chkLoot
+            // 
+            this.chkLoot.AutoSize = true;
+            this.chkLoot.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkLoot.Location = new System.Drawing.Point(137, 68);
+            this.chkLoot.Name = "chkLoot";
+            this.chkLoot.Size = new System.Drawing.Size(99, 17);
+            this.chkLoot.TabIndex = 127;
+            this.chkLoot.Text = "Loot corpses";
+            this.chkLoot.UseVisualStyleBackColor = true;
+            // 
+            // chkUseCC
+            // 
+            this.chkUseCC.AutoSize = true;
+            this.chkUseCC.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkUseCC.Location = new System.Drawing.Point(137, 91);
+            this.chkUseCC.Name = "chkUseCC";
+            this.chkUseCC.Size = new System.Drawing.Size(68, 17);
+            this.chkUseCC.TabIndex = 126;
+            this.chkUseCC.Text = "Use CC";
+            this.chkUseCC.UseVisualStyleBackColor = true;
+            // 
+            // chkHealerMode
+            // 
+            this.chkHealerMode.AutoSize = true;
+            this.chkHealerMode.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkHealerMode.Location = new System.Drawing.Point(9, 137);
+            this.chkHealerMode.Name = "chkHealerMode";
+            this.chkHealerMode.Size = new System.Drawing.Size(98, 17);
+            this.chkHealerMode.TabIndex = 125;
+            this.chkHealerMode.Text = "Healer Mode";
+            this.chkHealerMode.UseVisualStyleBackColor = true;
+            // 
+            // chkFastTag
+            // 
+            this.chkFastTag.AutoSize = true;
+            this.chkFastTag.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.chkFastTag.Location = new System.Drawing.Point(9, 68);
+            this.chkFastTag.Name = "chkFastTag";
+            this.chkFastTag.Size = new System.Drawing.Size(100, 17);
+            this.chkFastTag.TabIndex = 124;
+            this.chkFastTag.Text = "Fast Tagging";
+            this.chkFastTag.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label8.Location = new System.Drawing.Point(174, 38);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(16, 13);
+            this.label8.TabIndex = 123;
+            this.label8.Text = "m";
+            // 
+            // textCombatRange
+            // 
+            this.textCombatRange.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.textCombatRange.Location = new System.Drawing.Point(115, 35);
+            this.textCombatRange.Name = "textCombatRange";
+            this.textCombatRange.Size = new System.Drawing.Size(53, 20);
+            this.textCombatRange.TabIndex = 122;
+            // 
+            // labelCombatRange
+            // 
+            this.labelCombatRange.AutoSize = true;
+            this.labelCombatRange.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.labelCombatRange.Location = new System.Drawing.Point(19, 38);
+            this.labelCombatRange.Name = "labelCombatRange";
+            this.labelCombatRange.Size = new System.Drawing.Size(90, 13);
+            this.labelCombatRange.TabIndex = 121;
+            this.labelCombatRange.Text = "Combat Range";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label7.Location = new System.Drawing.Point(174, 12);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(16, 13);
+            this.label7.TabIndex = 120;
+            this.label7.Text = "m";
+            // 
+            // textZoneRadius
+            // 
+            this.textZoneRadius.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.textZoneRadius.Location = new System.Drawing.Point(115, 9);
+            this.textZoneRadius.Name = "textZoneRadius";
+            this.textZoneRadius.Size = new System.Drawing.Size(53, 20);
+            this.textZoneRadius.TabIndex = 119;
+            // 
+            // labelZoneRadius
+            // 
+            this.labelZoneRadius.AutoSize = true;
+            this.labelZoneRadius.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.labelZoneRadius.Location = new System.Drawing.Point(30, 12);
+            this.labelZoneRadius.Name = "labelZoneRadius";
+            this.labelZoneRadius.Size = new System.Drawing.Size(79, 13);
+            this.labelZoneRadius.TabIndex = 118;
+            this.labelZoneRadius.Text = "Zone Radius";
+            // 
+            // btnCombat
+            // 
+            this.btnCombat.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.btnCombat.Location = new System.Drawing.Point(137, 206);
+            this.btnCombat.Name = "btnCombat";
+            this.btnCombat.Size = new System.Drawing.Size(42, 23);
+            this.btnCombat.TabIndex = 117;
+            this.btnCombat.Text = "OFF";
+            this.btnCombat.UseVisualStyleBackColor = true;
+            this.btnCombat.Click += new System.EventHandler(this.btnCombat_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.label3.Location = new System.Drawing.Point(6, 206);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 24);
+            this.label3.TabIndex = 116;
+            this.label3.Text = "Combat (F2)";
             // 
             // tabBuff
             // 
@@ -1392,340 +1727,6 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "- Settings are saved whenever you start Loot or Combat";
             // 
-            // tabCombat
-            // 
-            this.tabCombat.Controls.Add(this.label30);
-            this.tabCombat.Controls.Add(this.label28);
-            this.tabCombat.Controls.Add(this.nuralsTrennleistebenutzt);
-            this.tabCombat.Controls.Add(this.nuralsTrennleistebenutzt2);
-            this.tabCombat.Controls.Add(this.label29);
-            this.tabCombat.Controls.Add(this.textMinMPplayDead);
-            this.tabCombat.Controls.Add(this.chkPlayDeadMana);
-            this.tabCombat.Controls.Add(this.chkOpenScratchedSafe);
-            this.tabCombat.Controls.Add(this.chkOpenStolenBag);
-            this.tabCombat.Controls.Add(this.chkAutoCombat);
-            this.tabCombat.Controls.Add(this.chkAssist);
-            this.tabCombat.Controls.Add(this.labelMinHP);
-            this.tabCombat.Controls.Add(this.textMinHP);
-            this.tabCombat.Controls.Add(this.labelMinMP);
-            this.tabCombat.Controls.Add(this.textMinMP);
-            this.tabCombat.Controls.Add(this.chkOpenPurses);
-            this.tabCombat.Controls.Add(this.chkLoot);
-            this.tabCombat.Controls.Add(this.chkUseCC);
-            this.tabCombat.Controls.Add(this.chkHealerMode);
-            this.tabCombat.Controls.Add(this.chkFastTag);
-            this.tabCombat.Controls.Add(this.label8);
-            this.tabCombat.Controls.Add(this.textCombatRange);
-            this.tabCombat.Controls.Add(this.labelCombatRange);
-            this.tabCombat.Controls.Add(this.label7);
-            this.tabCombat.Controls.Add(this.textZoneRadius);
-            this.tabCombat.Controls.Add(this.labelZoneRadius);
-            this.tabCombat.Controls.Add(this.btnCombat);
-            this.tabCombat.Controls.Add(this.label3);
-            this.tabCombat.Location = new System.Drawing.Point(4, 22);
-            this.tabCombat.Name = "tabCombat";
-            this.tabCombat.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCombat.Size = new System.Drawing.Size(540, 395);
-            this.tabCombat.TabIndex = 7;
-            this.tabCombat.Text = "Combat";
-            this.tabCombat.UseVisualStyleBackColor = true;
-            // 
-            // chkPlayDeadMana
-            // 
-            this.chkPlayDeadMana.AutoSize = true;
-            this.chkPlayDeadMana.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkPlayDeadMana.Location = new System.Drawing.Point(293, 137);
-            this.chkPlayDeadMana.Name = "chkPlayDeadMana";
-            this.chkPlayDeadMana.Size = new System.Drawing.Size(160, 17);
-            this.chkPlayDeadMana.TabIndex = 137;
-            this.chkPlayDeadMana.Text = "Use PlayDead for Mana";
-            this.chkPlayDeadMana.UseVisualStyleBackColor = true;
-            // 
-            // chkOpenScratchedSafe
-            // 
-            this.chkOpenScratchedSafe.AutoSize = true;
-            this.chkOpenScratchedSafe.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkOpenScratchedSafe.Location = new System.Drawing.Point(137, 114);
-            this.chkOpenScratchedSafe.Name = "chkOpenScratchedSafe";
-            this.chkOpenScratchedSafe.Size = new System.Drawing.Size(86, 17);
-            this.chkOpenScratchedSafe.TabIndex = 136;
-            this.chkOpenScratchedSafe.Text = "Open Safe";
-            this.chkOpenScratchedSafe.UseVisualStyleBackColor = true;
-            // 
-            // chkOpenStolenBag
-            // 
-            this.chkOpenStolenBag.AutoSize = true;
-            this.chkOpenStolenBag.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkOpenStolenBag.Location = new System.Drawing.Point(9, 114);
-            this.chkOpenStolenBag.Name = "chkOpenStolenBag";
-            this.chkOpenStolenBag.Size = new System.Drawing.Size(122, 17);
-            this.chkOpenStolenBag.TabIndex = 135;
-            this.chkOpenStolenBag.Text = "Open Stolen Bag";
-            this.chkOpenStolenBag.UseVisualStyleBackColor = true;
-            // 
-            // chkAutoCombat
-            // 
-            this.chkAutoCombat.AutoSize = true;
-            this.chkAutoCombat.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkAutoCombat.Location = new System.Drawing.Point(22, 235);
-            this.chkAutoCombat.Name = "chkAutoCombat";
-            this.chkAutoCombat.Size = new System.Drawing.Size(157, 17);
-            this.chkAutoCombat.TabIndex = 134;
-            this.chkAutoCombat.Text = "Enable combat on start";
-            this.chkAutoCombat.UseVisualStyleBackColor = true;
-            // 
-            // chkAssist
-            // 
-            this.chkAssist.AutoSize = true;
-            this.chkAssist.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkAssist.Location = new System.Drawing.Point(137, 137);
-            this.chkAssist.Name = "chkAssist";
-            this.chkAssist.Size = new System.Drawing.Size(94, 17);
-            this.chkAssist.TabIndex = 133;
-            this.chkAssist.Text = "Assist Mode";
-            this.chkAssist.UseVisualStyleBackColor = true;
-            // 
-            // labelMinHP
-            // 
-            this.labelMinHP.AutoSize = true;
-            this.labelMinHP.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.labelMinHP.Location = new System.Drawing.Point(7, 168);
-            this.labelMinHP.Name = "labelMinHP";
-            this.labelMinHP.Size = new System.Drawing.Size(57, 13);
-            this.labelMinHP.TabIndex = 132;
-            this.labelMinHP.Text = "Min HP%";
-            // 
-            // textMinHP
-            // 
-            this.textMinHP.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.textMinHP.Location = new System.Drawing.Point(70, 165);
-            this.textMinHP.Name = "textMinHP";
-            this.textMinHP.Size = new System.Drawing.Size(31, 20);
-            this.textMinHP.TabIndex = 131;
-            // 
-            // labelMinMP
-            // 
-            this.labelMinMP.AutoSize = true;
-            this.labelMinMP.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.labelMinMP.Location = new System.Drawing.Point(132, 168);
-            this.labelMinMP.Name = "labelMinMP";
-            this.labelMinMP.Size = new System.Drawing.Size(58, 13);
-            this.labelMinMP.TabIndex = 130;
-            this.labelMinMP.Text = "Min MP%";
-            // 
-            // textMinMP
-            // 
-            this.textMinMP.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.textMinMP.Location = new System.Drawing.Point(196, 165);
-            this.textMinMP.Name = "textMinMP";
-            this.textMinMP.Size = new System.Drawing.Size(31, 20);
-            this.textMinMP.TabIndex = 129;
-            // 
-            // chkOpenPurses
-            // 
-            this.chkOpenPurses.AutoSize = true;
-            this.chkOpenPurses.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkOpenPurses.Location = new System.Drawing.Point(9, 91);
-            this.chkOpenPurses.Name = "chkOpenPurses";
-            this.chkOpenPurses.Size = new System.Drawing.Size(98, 17);
-            this.chkOpenPurses.TabIndex = 128;
-            this.chkOpenPurses.Text = "Open Purses";
-            this.chkOpenPurses.UseVisualStyleBackColor = true;
-            // 
-            // chkLoot
-            // 
-            this.chkLoot.AutoSize = true;
-            this.chkLoot.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkLoot.Location = new System.Drawing.Point(137, 68);
-            this.chkLoot.Name = "chkLoot";
-            this.chkLoot.Size = new System.Drawing.Size(99, 17);
-            this.chkLoot.TabIndex = 127;
-            this.chkLoot.Text = "Loot corpses";
-            this.chkLoot.UseVisualStyleBackColor = true;
-            // 
-            // chkUseCC
-            // 
-            this.chkUseCC.AutoSize = true;
-            this.chkUseCC.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkUseCC.Location = new System.Drawing.Point(137, 91);
-            this.chkUseCC.Name = "chkUseCC";
-            this.chkUseCC.Size = new System.Drawing.Size(68, 17);
-            this.chkUseCC.TabIndex = 126;
-            this.chkUseCC.Text = "Use CC";
-            this.chkUseCC.UseVisualStyleBackColor = true;
-            // 
-            // chkHealerMode
-            // 
-            this.chkHealerMode.AutoSize = true;
-            this.chkHealerMode.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkHealerMode.Location = new System.Drawing.Point(9, 137);
-            this.chkHealerMode.Name = "chkHealerMode";
-            this.chkHealerMode.Size = new System.Drawing.Size(98, 17);
-            this.chkHealerMode.TabIndex = 125;
-            this.chkHealerMode.Text = "Healer Mode";
-            this.chkHealerMode.UseVisualStyleBackColor = true;
-            // 
-            // chkFastTag
-            // 
-            this.chkFastTag.AutoSize = true;
-            this.chkFastTag.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.chkFastTag.Location = new System.Drawing.Point(9, 68);
-            this.chkFastTag.Name = "chkFastTag";
-            this.chkFastTag.Size = new System.Drawing.Size(100, 17);
-            this.chkFastTag.TabIndex = 124;
-            this.chkFastTag.Text = "Fast Tagging";
-            this.chkFastTag.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label8.Location = new System.Drawing.Point(174, 38);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(16, 13);
-            this.label8.TabIndex = 123;
-            this.label8.Text = "m";
-            // 
-            // textCombatRange
-            // 
-            this.textCombatRange.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.textCombatRange.Location = new System.Drawing.Point(115, 35);
-            this.textCombatRange.Name = "textCombatRange";
-            this.textCombatRange.Size = new System.Drawing.Size(53, 20);
-            this.textCombatRange.TabIndex = 122;
-            // 
-            // labelCombatRange
-            // 
-            this.labelCombatRange.AutoSize = true;
-            this.labelCombatRange.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.labelCombatRange.Location = new System.Drawing.Point(19, 38);
-            this.labelCombatRange.Name = "labelCombatRange";
-            this.labelCombatRange.Size = new System.Drawing.Size(90, 13);
-            this.labelCombatRange.TabIndex = 121;
-            this.labelCombatRange.Text = "Combat Range";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label7.Location = new System.Drawing.Point(174, 12);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 13);
-            this.label7.TabIndex = 120;
-            this.label7.Text = "m";
-            // 
-            // textZoneRadius
-            // 
-            this.textZoneRadius.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.textZoneRadius.Location = new System.Drawing.Point(115, 9);
-            this.textZoneRadius.Name = "textZoneRadius";
-            this.textZoneRadius.Size = new System.Drawing.Size(53, 20);
-            this.textZoneRadius.TabIndex = 119;
-            // 
-            // labelZoneRadius
-            // 
-            this.labelZoneRadius.AutoSize = true;
-            this.labelZoneRadius.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.labelZoneRadius.Location = new System.Drawing.Point(30, 12);
-            this.labelZoneRadius.Name = "labelZoneRadius";
-            this.labelZoneRadius.Size = new System.Drawing.Size(79, 13);
-            this.labelZoneRadius.TabIndex = 118;
-            this.labelZoneRadius.Text = "Zone Radius";
-            // 
-            // btnCombat
-            // 
-            this.btnCombat.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.btnCombat.Location = new System.Drawing.Point(137, 206);
-            this.btnCombat.Name = "btnCombat";
-            this.btnCombat.Size = new System.Drawing.Size(42, 23);
-            this.btnCombat.TabIndex = 117;
-            this.btnCombat.Text = "OFF";
-            this.btnCombat.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label3.Location = new System.Drawing.Point(6, 206);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 24);
-            this.label3.TabIndex = 116;
-            this.label3.Text = "Combat (F2)";
-            // 
-            // textMinMPplayDead
-            // 
-            this.textMinMPplayDead.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.textMinMPplayDead.Location = new System.Drawing.Point(375, 154);
-            this.textMinMPplayDead.Name = "textMinMPplayDead";
-            this.textMinMPplayDead.Size = new System.Drawing.Size(31, 20);
-            this.textMinMPplayDead.TabIndex = 139;
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label29.Location = new System.Drawing.Point(311, 157);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(58, 13);
-            this.label29.TabIndex = 140;
-            this.label29.Text = "Min MP%";
-            // 
-            // nuralsTrennleistebenutzt2
-            // 
-            this.nuralsTrennleistebenutzt2.Location = new System.Drawing.Point(-4, 258);
-            this.nuralsTrennleistebenutzt2.Name = "nuralsTrennleistebenutzt2";
-            this.nuralsTrennleistebenutzt2.Size = new System.Drawing.Size(276, 16);
-            this.nuralsTrennleistebenutzt2.TabIndex = 141;
-            // 
-            // nuralsTrennleistebenutzt
-            // 
-            this.nuralsTrennleistebenutzt.Location = new System.Drawing.Point(269, 0);
-            this.nuralsTrennleistebenutzt.Name = "nuralsTrennleistebenutzt";
-            this.nuralsTrennleistebenutzt.Size = new System.Drawing.Size(18, 274);
-            this.nuralsTrennleistebenutzt.TabIndex = 142;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label28.Location = new System.Drawing.Point(412, 157);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(100, 13);
-            this.label28.TabIndex = 143;
-            this.label28.Text = "to use PlayDead";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.label30.Location = new System.Drawing.Point(344, 27);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(100, 24);
-            this.label30.TabIndex = 144;
-            this.label30.Text = "Test Area";
-            // 
-            // lootEnchantedSkein
-            // 
-            this.lootEnchantedSkein.AutoSize = true;
-            this.lootEnchantedSkein.Location = new System.Drawing.Point(344, 215);
-            this.lootEnchantedSkein.Name = "lootEnchantedSkein";
-            this.lootEnchantedSkein.Size = new System.Drawing.Size(123, 17);
-            this.lootEnchantedSkein.TabIndex = 115;
-            this.lootEnchantedSkein.Text = "Enchanted Skein";
-            this.lootEnchantedSkein.UseVisualStyleBackColor = true;
-            // 
-            // lootDisciplesTear
-            // 
-            this.lootDisciplesTear.AutoSize = true;
-            this.lootDisciplesTear.Location = new System.Drawing.Point(344, 238);
-            this.lootDisciplesTear.Name = "lootDisciplesTear";
-            this.lootDisciplesTear.Size = new System.Drawing.Size(110, 17);
-            this.lootDisciplesTear.TabIndex = 116;
-            this.lootDisciplesTear.Text = "Disciple\'s Tear";
-            this.lootDisciplesTear.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1739,8 +1740,10 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormMain_FormClosed);
             this.Shown += new System.EventHandler(this.FormMain_Shown);
             this.tabControl.ResumeLayout(false);
-            this.tabMain.ResumeLayout(false);
-            this.tabMain.PerformLayout();
+            this.tabLoot.ResumeLayout(false);
+            this.tabLoot.PerformLayout();
+            this.tabCombat.ResumeLayout(false);
+            this.tabCombat.PerformLayout();
             this.tabBuff.ResumeLayout(false);
             this.tabBuff.PerformLayout();
             this.tabIgnore.ResumeLayout(false);
@@ -1752,8 +1755,6 @@
             this.tableLayoutPanel1.PerformLayout();
             this.tabHelp.ResumeLayout(false);
             this.tabHelp.PerformLayout();
-            this.tabCombat.ResumeLayout(false);
-            this.tabCombat.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1761,7 +1762,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabMain;
+        private System.Windows.Forms.TabPage tabLoot;
         private System.Windows.Forms.CheckBox lootSacrifice;
         private System.Windows.Forms.CheckBox lootLoyalty;
         private System.Windows.Forms.CheckBox lootHonor;
