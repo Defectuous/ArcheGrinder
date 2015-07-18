@@ -837,7 +837,7 @@ namespace ArcheGrinder
                 if (mount != null && !core.isAlive(mount) && mount.getBuffs().Any(b => b.id == _BF_TRIPPED))
                 {
                     // rez it
-                    core.Log("Trying to resurrect pet");
+                    core.Log("Trying to resurrect pet", System.Drawing.Color.PowderBlue);
 
                     // clear mobs within 7m of pet to get a clean resurrect
                     List<Creature> mobs = core.getCreatures();
@@ -873,14 +873,14 @@ namespace ArcheGrinder
             while (core.me.isCasting || core.me.isGlobalCooldown)
                 Thread.Sleep(50);
 
-            core.Log("Using Play Dead");
+            core.Log("Using Play Dead", System.Drawing.Color.PowderBlue);
             core.UseSkill(_PLAY_DEAD, false, true);
             Thread.Sleep(1000);
 
             while (core.me.isCasting && GetAggroCount() == 0 && (core.mpp() < 95 || core.hpp() < 95))
                 Thread.Sleep(50);
 
-            core.Log("Finished using Play Dead");
+            core.Log("Finished using Play Dead", System.Drawing.Color.PowderBlue);
 
             core.CancelSkill();
             Thread.Sleep(50);
@@ -937,12 +937,13 @@ namespace ArcheGrinder
         {
             if (obj == core.me)
             {
-                core.Log("Character died :( Triggering death routine to try to run back to farm spot");
+                core.Log(core.me.name + " died :( Triggering death routine to try to run back to farm spot", System.Drawing.Color.Red);
 
-                string[] paths = Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Plugins\\ArcheGrinder\\DeathRoutes", core.me.name+"*.db3");
+                string[] paths = Directory.GetFiles(System.Windows.Forms.Application.StartupPath + "\\Plugins\\ArcheGrinder\\DeathRoutes", core.me.name + "*.db3");
                 if (paths.Length == 0)
                 {
-                    core.Log("You don't have any routes in the DeathRoutes folder");
+                   
+                    core.Log(core.me.name + " You don't have any routes in the DeathRoutes folder [946]");
                     return;
                 }
 
@@ -950,14 +951,19 @@ namespace ArcheGrinder
                 {
                     if (thread.IsAlive)
                         thread.Abort();
+                    
 
                     Random r = new Random();
                     Thread.Sleep(r.Next(5000, 10000));
                     core.ResToRespoint();
+                    if (core.GetLastError() == LastError.RessurectNeedWaitMoreTime)
+                    {
+                        Thread.Sleep(30000);
+                    }
                     core.WaitTeleportCompleted(60000);
                 }
 
-                paths = ArrayTools.RandomizeStrings(paths);
+                //paths = ArrayTools.RandomizeStrings(paths); //disabled for testing
                 bool foundPath = false;
                 foreach (string path in paths)
                 {
@@ -966,7 +972,7 @@ namespace ArcheGrinder
                         GpsPoint respawn = gps.GetPoint("Respawn");
                         if (respawn == null)
                         {
-                            core.Log("Warning: " + path + " doesn't have a 'Respawn' point");
+                            core.Log("Warning: " + path + " doesn't have a 'Respawn' point [971]");
                             continue;
                         }
 
@@ -975,12 +981,12 @@ namespace ArcheGrinder
                             GpsPoint pew = gps.GetPoint("Pew");
                             if (pew == null)
                             {
-                                core.Log("Warning: " + path + " doesn't have a 'Pew' point");
+                                core.Log("Warning: " + path + " doesn't have a 'Pew' point [980]");
                                 continue;
                             }
 
                             foundPath = true;
-                            core.Log("Loading path to run back: " + path, System.Drawing.Color.Green);
+                            core.Log(core.me.name + " Loading path to run back: " + path + " [985]", System.Drawing.Color.Green);
 
                             Thread gpsAttack = new Thread(gps_AttackThread);
                             gpsAttack.Start();
@@ -990,7 +996,7 @@ namespace ArcheGrinder
                                 if (!gps.GpsMove("Pew"))
                                 {
                                     if (core.GetLastError() != LastError.MoveCanceled)
-                                        core.Log("GPS Error: " + core.GetLastError() + " (trying again)");
+                                        core.Log(core.me.name + " GPS Error: " + core.GetLastError() + " (trying again) [995]");
 
                                     Thread.Sleep(1000);
                                 }
@@ -1000,21 +1006,21 @@ namespace ArcheGrinder
 
                             if (!thread.IsAlive)
                             {
-                                core.Log("Restarting combat");
+                                core.Log(core.me.name + " Restarting combat [1005]");
                                 thread.Abort();
 
                                 thread = new Thread(CombatThread);
                                 thread.Start();
                             }
                             else
-                                core.Log("Starting combat");
+                                core.Log(core.me.name + " Starting combat [1012]");
                             break;
                         }
                     }
                 }
 
                 if (!foundPath)
-                    core.Log("No path in the DeathRoutes folder matched your current respawn point");
+                    core.Log(core.me.name + " No path in the DeathRoutes folder matched your current respawn point");
             }
         }
         private void gps_AttackThread()
@@ -1032,7 +1038,7 @@ namespace ArcheGrinder
 
                         if (GetAggroCount() == 0 && (core.hpp() < prefs.minHP || core.mpp() < prefs.minMP))
                         {
-                            core.Log("Pausing run-back routine to rebuff/regen");
+                            core.Log(core.me.name + " Pausing run-back routine to rebuff/regen");
                             gps.SuspendGpsMove();
 
                             while (GetAggroCount() == 0 && (core.hpp() < prefs.minHP || core.mpp() < prefs.minMP))
@@ -1058,7 +1064,7 @@ namespace ArcheGrinder
 
                         )
                         {
-                            core.Log("Pausing run-back routine to kill " + mob.name);
+                            core.Log(core.me.name + " Pausing run-back routine to kill " + mob.name);
                             gps.SuspendGpsMove();
                             KillMob(mob);
                             gps.ResumeGpsMove();
@@ -1116,12 +1122,12 @@ namespace ArcheGrinder
             if (lute == null)
                 lute = core.me.getEquipedItem(prefs.luteId);
             if (lute != null)
-                core.Log("Lute: " + lute.name);
+                core.Log(core.me.name + " Lute: " + lute.name);
             Item flute = core.getInvItem(prefs.fluteId);
             if (flute == null)
                 flute = core.me.getEquipedItem(prefs.fluteId);
             if (flute != null)
-                core.Log("Flute: " + flute.name);
+                core.Log(core.me.name + " Flute: " + flute.name);
 
             // Check if we have potions
             usePotionHP = usePotionMP = useFoodMP = useFoodHP = false;
@@ -1131,22 +1137,22 @@ namespace ArcheGrinder
                 if (!usePotionHP && item.name.Equals(prefs.potionHP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     usePotionHP = true;
-                    core.Log("Using HP Potion for this session: " + item.name);
+                    core.Log(core.me.name + " Using HP Potion for this session: " + item.name);
                 }
                 else if (!usePotionMP && item.name.Equals(prefs.potionMP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     usePotionMP = true;
-                    core.Log("Using MP Potion for this session: " + item.name);
+                    core.Log(core.me.name + " Using MP Potion for this session: " + item.name);
                 }
                 else if (!useFoodHP && item.name.Equals(prefs.foodHP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     useFoodHP = true;
-                    core.Log("Using HP Food for this session: " + item.name);
+                    core.Log(core.me.name + " Using HP Food for this session: " + item.name);
                 }
                 else if (!useFoodMP && item.name.Equals(prefs.foodMP, StringComparison.CurrentCultureIgnoreCase))
                 {
                     useFoodMP = true;
-                    core.Log("Using MP Food for this session: " + item.name);
+                    core.Log(core.me.name + " Using MP Food for this session: " + item.name);
                 }
             }
 
@@ -1168,7 +1174,7 @@ namespace ArcheGrinder
             if (core.isInPeaceZone())
             {
                 // near a rez statue, trigger runback
-                core.Log("Near a statue, triggering runback routine before starting combat");
+                core.Log(core.me.name + " Near a statue, triggering runback routine before starting combat");
                 core_onCreatureDied(core.me);
             }
 
@@ -1182,7 +1188,7 @@ namespace ArcheGrinder
             {
                 if (!core.isAlive())
                 {
-                    core.Log("You died...");
+                    core.Log(core.me.name + " You died...");
                     break;
                 }
 
@@ -1208,12 +1214,12 @@ namespace ArcheGrinder
                     if (bestMob == null)
                     {
                         if (!noTargets)
-                            core.Log("No targets available");
+                            core.Log(core.me.name + " No targets available");
                         noTargets = true;
                     }
                     else
                     {
-                        core.Log("new target: " + bestMob.name + " (" + Math.Round(bestMob.dist(startX, startY, startZ)) + "m from anchor)");
+                        core.Log(core.me.name + " new target: " + bestMob.name + " (" + Math.Round(bestMob.dist(startX, startY, startZ)) + "m from anchor)");
                         noTargets = false;
                     }
                 }
@@ -1230,7 +1236,7 @@ namespace ArcheGrinder
                     int labor = core.me.opPoints;
                     if (purseCount >= 5 && labor >= 25 && (labor >= laborCap - 50 || (DateTime.UtcNow - lastPurseOpened).TotalSeconds > 300))
                     {
-                        core.Log("Trying to open up to " + purseCount + " coinpurses");
+                        core.Log(core.me.name + " Trying to open up to " + purseCount + " coinpurses");
                         while (purseCount > 0 && core.me.opPoints >= 5 && GetAggroCount() == 0 && (noTargets || core.hpp() + core.mpp() < 190))
                         {
                             inventory = core.getAllInvItems();
@@ -1258,7 +1264,7 @@ namespace ArcheGrinder
                     int labor = core.me.opPoints;
                     if (StolenBagCount >= 5 && labor >= 25 && (labor <= laborCap - 150 || (DateTime.UtcNow - lastStolenBagOpened).TotalSeconds > 300))
                     {
-                        core.Log("Trying to open up to " + StolenBagCount + " Stolen Bag's");
+                        core.Log(core.me.name + " Trying to open up to " + StolenBagCount + " Stolen Bag's");
                         while (StolenBagCount > 0 && core.me.opPoints >= 5 && GetAggroCount() == 0 && (noTargets || core.hpp() + core.mpp() < 190))
                         {
                             inventory = core.getAllInvItems();
@@ -1288,7 +1294,7 @@ namespace ArcheGrinder
                     int labor = core.me.opPoints;
                     if (ScratchedSafeCount >= 5 && labor >= 25 && (labor <= laborCap - 150 || (DateTime.UtcNow - lastScratchedSafeOpened).TotalSeconds > 300))
                     {
-                        core.Log("Trying to open up to " + ScratchedSafeCount + " Stolen Bag's");
+                        core.Log(core.me.name + " Trying to open up to " + ScratchedSafeCount + " Stolen Bag's");
                         while (ScratchedSafeCount > 0 && core.me.opPoints >= 5 && GetAggroCount() == 0 && (noTargets || core.hpp() + core.mpp() < 190))
                         {
                             inventory = core.getAllInvItems();
@@ -1336,7 +1342,7 @@ namespace ArcheGrinder
 
                     if (core.getBuff(bestMob, _BF_RETURNING) != null)
                     {
-                        core.Log("Mob is running away, skipping");
+                        core.Log(core.me.name + " Mob is running away, skipping");
                         bestMob = null;
                         break;
                     }
@@ -1381,7 +1387,7 @@ namespace ArcheGrinder
                 }
 
                 if (bestMob != null)
-                    core.Log("Killed " + bestMob.name + "?");
+                    core.Log(core.me.name + " Killed " + bestMob.name + "?");
 
                 #region looting
                 if (team.Count <= 50 && prefs.lootCorpses)
@@ -1397,7 +1403,7 @@ namespace ArcheGrinder
                         double diff = (DateTime.UtcNow - startLoot).TotalSeconds;
                         if (diff > 5 || (GetAggroCount() > 0 && diff > 3))
                         {
-                            core.Log("Spent too long trying to loot, giving up");
+                            core.Log(core.me.name + " Spent too long trying to loot, giving up");
                             break;
                         }
                     }
@@ -1416,7 +1422,7 @@ namespace ArcheGrinder
             catch (ThreadAbortException) { }
             catch (Exception ex)
             {
-                core.Log("Combat exception: " + ex.Message + "\n" + ex.StackTrace);
+                core.Log(core.me.name + " Combat exception: " + ex.Message + "\n" + ex.StackTrace);
             }
         }
 
@@ -1436,12 +1442,12 @@ namespace ArcheGrinder
                 if (potionHP == null)
                 {
                     usePotionHP = false;
-                    core.Log("WARNING: You ran out of HP potions!");
+                    core.Log(core.me.name + " WARNING: You ran out of HP potions!");
                 }
                 else if ((DateTime.UtcNow - lastPotionUsed).TotalSeconds >= prefs.potionCooldown)
                 {
                     UseItemAndWait(potionHP.id);
-                    core.Log("Using some " + potionHP.name + " to regain health in combat");
+                    core.Log(core.me.name + " Using some " + potionHP.name + " to regain health in combat");
                     lastPotionUsed = DateTime.UtcNow;
                 }
             }
@@ -1452,12 +1458,12 @@ namespace ArcheGrinder
                 if (potionMP == null)
                 {
                     usePotionMP = false;
-                    core.Log("WARNING: You ran out of Mana potions!");
+                    core.Log(core.me.name+" WARNING: You ran out of Mana potions!");
                 }
                 else if ((DateTime.UtcNow - lastPotionUsed).TotalSeconds >= prefs.potionCooldown)
                 {
                     UseItemAndWait(potionMP.id);
-                    core.Log("Using some " + potionMP.name + " to regain mana in combat");
+                    core.Log(core.me.name + " Using some " + potionMP.name + " to regain mana in combat");
                     lastPotionUsed = DateTime.UtcNow;
                 }
             }
@@ -1472,7 +1478,7 @@ namespace ArcheGrinder
         }
         private void SelectAndUseControlSkill(Creature combatTarget)
         {
-            core.Log("Trying to control an extra mob!");
+            core.Log(core.me.name+" is trying to control an extra mob!", System.Drawing.Color.Orange);
             foreach (Creature mob in core.getAggroMobs())
             {
                 if (mob != combatTarget && !IsControlled(mob) && core.isAttackable(combatTarget))
@@ -1633,11 +1639,7 @@ namespace ArcheGrinder
                     UseSkillAndWait(_BOASTFUL_ROAR);
             }
             
-            if (!didCast && dist <= 8)
-            {
-                if (CanCast(_FOCAL_CONCUSSION))
-                    UseSkillAndWait(_FOCAL_CONCUSSION);
-            }
+            
 
 
             if ((CanCast(_METEOR_STRIKE)) && !didCast && hppT > 70 && mpp > 50 && GetAggroCount() == 0)
