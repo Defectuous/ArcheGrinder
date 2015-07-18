@@ -961,11 +961,12 @@ namespace ArcheGrinder
                     {
                         core.Log("We need more time untill we can Ressurect, Let's Sleep for 30secs");
                         Thread.Sleep(30000);
+                        
                     }
                     core.WaitTeleportCompleted(60000);
                 }
 
-                //paths = ArrayTools.RandomizeStrings(paths); //disabled for testing
+                paths = ArrayTools.RandomizeStrings(paths); 
                 bool foundPath = false;
                 foreach (string path in paths)
                 {
@@ -1021,7 +1022,7 @@ namespace ArcheGrinder
                     }
                 }
 
-                if (!foundPath)
+                if (!foundPath && core.GetLastError() != LastError.RessurectNeedWaitMoreTime)
                     core.Log(core.me.name + " No path in the DeathRoutes folder matched your current respawn point");
             }
         }
