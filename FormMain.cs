@@ -115,6 +115,8 @@ namespace ArcheGrinder
             catch { }
         }
 
+        
+
         public void SetCore(Core core)
         {
             this.core = core;
@@ -158,6 +160,34 @@ namespace ArcheGrinder
             core.onExpChanged += core_onExpChanged;
             core.onNewInvItem += core_onNewInvItem;
             core.onCreatureDied += core_onCreatureDied;
+        }
+
+        private void btnCombat_Click()
+        {
+            if (!isFighting)
+                SaveSettings();
+
+            isFighting = !isFighting;
+            btnCombat.Text = isFighting ? "ON" : "OFF";
+
+            UpdateCombatOptions();
+
+            if (isFighting)
+            {
+                combat = new Combat(core, prefs);
+                xp = kills = purses = petXp = tokens = 0;
+                combatStart = DateTime.UtcNow;
+                UpdateStats();
+            }
+            else
+            {
+                UpdateStats(); // update stats a last time to get an accurate value for the session
+                if (combat != null)
+                {
+                    combat.Stop();
+                    combat = null;
+                }
+            }
         }
 
         void core_onCreatureDied(Creature obj)
@@ -512,33 +542,7 @@ namespace ArcheGrinder
                 }
             }
         }
-        private void btnCombat_Click(object sender = null, EventArgs e = null)
-        {
-            if(!isFighting)
-                SaveSettings();
-
-            isFighting = !isFighting;
-            btnCombat.Text = isFighting ? "ON" : "OFF";
-
-            UpdateCombatOptions();
-
-            if (isFighting)
-            {
-                combat = new Combat(core, prefs);
-                xp = kills = purses = petXp = tokens = 0;
-                combatStart = DateTime.UtcNow;
-                UpdateStats();
-            }
-            else
-            {
-                UpdateStats(); // update stats a last time to get an accurate value for the session
-                if (combat != null)
-                {
-                    combat.Stop();
-                    combat = null;
-                }
-            }
-        }
+        
         private void btnCheckPots_Click(object sender = null, EventArgs e = null)
         {
             labelQtyFoodHP.Text = labelQtyFoodMP.Text = labelQtyPotionHP.Text = labelQtyPotionMP.Text = "";
@@ -575,6 +579,34 @@ namespace ArcheGrinder
         {
             
             this.Text = "ArcheGrinder used by: " + core.me.name;
+        }
+
+        private void btnCombat_Click(object sender, EventArgs e)
+        {
+            if (!isFighting)
+                SaveSettings();
+
+            isFighting = !isFighting;
+            btnCombat.Text = isFighting ? "ON" : "OFF";
+
+            UpdateCombatOptions();
+
+            if (isFighting)
+            {
+                combat = new Combat(core, prefs);
+                xp = kills = purses = petXp = tokens = 0;
+                combatStart = DateTime.UtcNow;
+                UpdateStats();
+            }
+            else
+            {
+                UpdateStats(); // update stats a last time to get an accurate value for the session
+                if (combat != null)
+                {
+                    combat.Stop();
+                    combat = null;
+                }
+            }
         }
 
         private void UpdateLootOptions()
