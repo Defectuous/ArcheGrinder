@@ -956,8 +956,10 @@ namespace ArcheGrinder
                     Random r = new Random();
                     Thread.Sleep(r.Next(5000, 10000));
                     core.ResToRespoint();
-                    if (core.GetLastError() == LastError.RessurectNeedWaitMoreTime)
+                    core.GetLastError();
+                    if (core.GetLastError() == LastError.RessurectNeedWaitMoreTime) //vielleicht hilft das ja gegen den Unmarshall error
                     {
+                        core.Log("We need more time untill we can Ressurect, Let's Sleep for 30secs");
                         Thread.Sleep(30000);
                     }
                     core.WaitTeleportCompleted(60000);
